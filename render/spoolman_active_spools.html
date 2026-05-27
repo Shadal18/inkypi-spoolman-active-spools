@@ -1,0 +1,66 @@
+{% extends "plugin.html" %} {% block content %}
+<div class="board layout-{{ layout_mode }}">
+  <div class="board-header">
+    <div>
+      <div class="board-title">{{ title }}</div>
+      <div class="board-subtitle">{{ active_window_label }}</div>
+    </div>
+    <div class="board-count">{{ item_count }} active</div>
+  </div>
+
+  {% if items|length == 0 %}
+  <div class="empty-state">
+    <div class="empty-title">No active filaments</div>
+    <div class="empty-subtitle">{{ active_window_label }}.</div>
+  </div>
+  {% else %}
+  <div class="card-grid">
+    {% for item in items %}
+    <article class="filament-card{% if not item['hasAnyText'] %} swatch-only{% endif %}">
+      <div class="swatch-wrap{% if not item['hasAnyText'] %} full-swatch{% endif %}">
+        <div class="swatch" style="background: {{ item['hex'] }};"></div>
+        {% if item['displayMaterial'] %}
+        <div class="material-pill">{{ item['displayMaterial'] }}</div>
+        {% endif %}
+      </div>
+
+      {% if item['hasAnyText'] %}
+      <div class="card-body">
+        <div class="card-topline">
+          {% if item['displayTitle'] %}
+          <div class="filament-name">{{ item['displayTitle'] }}</div>
+          {% endif %} {% if item['displaySpoolId'] %}
+          <div class="spool-id">#{{ item['displaySpoolId'] }}</div>
+          {% endif %}
+        </div>
+
+        {% if item['displayBrand'] %}
+        <div class="brand-line">{{ item['displayBrand'] }}</div>
+        {% endif %} {% if item['displayGrams'] %}
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-label">Remaining</div>
+            <div class="stat-value">{{ item['displayGrams'] }}</div>
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="card-footer">
+          {% if item['displayLastUsed'] %}
+          <div class="last-used">{{ item['displayLastUsed'] }}</div>
+          {% endif %} {% if layout_mode != 'hero' and item['displayLocation'] %}
+          <div class="location">{{ item['displayLocation'] }}</div>
+          {% endif %}
+        </div>
+
+        {% if layout_mode == 'hero' and item['displayLocation'] %}
+        <div class="hero-location">{{ item['displayLocation'] }}</div>
+        {% endif %}
+      </div>
+      {% endif %}
+    </article>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

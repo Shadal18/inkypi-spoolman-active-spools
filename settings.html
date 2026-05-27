@@ -1,0 +1,155 @@
+<div class="form-group">
+  <label for="spoolman_url" class="form-label">Spoolman URL:</label>
+  <input
+    type="text"
+    id="spoolman_url"
+    name="spoolman_url"
+    placeholder="http://spoolman.local:7912"
+    class="form-input"
+    required
+  />
+</div>
+
+<div class="form-group">
+  <label for="active_minutes" class="form-label">Active Window (minutes):</label>
+  <input type="number" id="active_minutes" name="active_minutes" placeholder="60" class="form-input" min="1" step="1" />
+</div>
+
+<div class="form-group">
+  <label for="title_text" class="form-label">Header Text:</label>
+  <input type="text" id="title_text" name="title_text" placeholder="Recent Active Filaments" class="form-input" />
+</div>
+
+<div class="form-group">
+  <label class="form-label">Display Options:</label>
+
+  <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 8px">
+    <div
+      class="form-group"
+      style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0"
+    >
+      <label for="display_color_toggle" class="form-label" style="margin: 0">Color</label>
+      <div class="toggle-container">
+        <input type="checkbox" id="display_color_toggle" class="toggle-checkbox" />
+        <label for="display_color_toggle" class="toggle-label"></label>
+      </div>
+      <input type="hidden" id="display_color" name="display_color" value="show" />
+    </div>
+
+    <div
+      class="form-group"
+      style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0"
+    >
+      <label for="display_material_toggle" class="form-label" style="margin: 0">Material</label>
+      <div class="toggle-container">
+        <input type="checkbox" id="display_material_toggle" class="toggle-checkbox" />
+        <label for="display_material_toggle" class="toggle-label"></label>
+      </div>
+      <input type="hidden" id="display_material" name="display_material" value="show" />
+    </div>
+
+    <div
+      class="form-group"
+      style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0"
+    >
+      <label for="display_brand_toggle" class="form-label" style="margin: 0">Brand</label>
+      <div class="toggle-container">
+        <input type="checkbox" id="display_brand_toggle" class="toggle-checkbox" />
+        <label for="display_brand_toggle" class="toggle-label"></label>
+      </div>
+      <input type="hidden" id="display_brand" name="display_brand" value="show" />
+    </div>
+
+    <div
+      class="form-group"
+      style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0"
+    >
+      <label for="display_spool_id_toggle" class="form-label" style="margin: 0">Spool ID</label>
+      <div class="toggle-container">
+        <input type="checkbox" id="display_spool_id_toggle" class="toggle-checkbox" />
+        <label for="display_spool_id_toggle" class="toggle-label"></label>
+      </div>
+      <input type="hidden" id="display_spool_id" name="display_spool_id" value="show" />
+    </div>
+
+    <div
+      class="form-group"
+      style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0"
+    >
+      <label for="display_grams_toggle" class="form-label" style="margin: 0">Remaining Grams</label>
+      <div class="toggle-container">
+        <input type="checkbox" id="display_grams_toggle" class="toggle-checkbox" />
+        <label for="display_grams_toggle" class="toggle-label"></label>
+      </div>
+      <input type="hidden" id="display_grams" name="display_grams" value="show" />
+    </div>
+
+    <div
+      class="form-group"
+      style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0"
+    >
+      <label for="display_last_used_toggle" class="form-label" style="margin: 0">Last Used</label>
+      <div class="toggle-container">
+        <input type="checkbox" id="display_last_used_toggle" class="toggle-checkbox" />
+        <label for="display_last_used_toggle" class="toggle-label"></label>
+      </div>
+      <input type="hidden" id="display_last_used" name="display_last_used" value="show" />
+    </div>
+
+    <div
+      class="form-group"
+      style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0"
+    >
+      <label for="display_location_toggle" class="form-label" style="margin: 0">Location</label>
+      <div class="toggle-container">
+        <input type="checkbox" id="display_location_toggle" class="toggle-checkbox" />
+        <label for="display_location_toggle" class="toggle-label"></label>
+      </div>
+      <input type="hidden" id="display_location" name="display_location" value="show" />
+    </div>
+  </div>
+</div>
+
+<script>
+  function initToggle(settingName, defaultValue = "show") {
+    const hiddenInput = document.getElementById(settingName)
+    const toggle = document.getElementById(settingName + "_toggle")
+
+    let currentValue = defaultValue
+    if (typeof loadPluginSettings !== "undefined" && loadPluginSettings && pluginSettings[settingName] !== undefined) {
+      currentValue = pluginSettings[settingName]
+    }
+
+    const isShown = currentValue === "show"
+    hiddenInput.value = isShown ? "show" : "hide"
+    toggle.checked = isShown
+
+    toggle.addEventListener("change", () => {
+      hiddenInput.value = toggle.checked ? "show" : "hide"
+    })
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    let spoolman_url = "http://spoolman.local:7912"
+    let active_minutes = "60"
+    let title_text = "Recent Active Filaments"
+
+    if (typeof loadPluginSettings !== "undefined" && loadPluginSettings) {
+      spoolman_url = pluginSettings.spoolman_url || spoolman_url
+      active_minutes = pluginSettings.active_minutes || active_minutes
+      title_text = pluginSettings.title_text || title_text
+    }
+
+    document.getElementById("spoolman_url").value = spoolman_url
+    document.getElementById("active_minutes").value = active_minutes
+    document.getElementById("title_text").value = title_text
+
+    initToggle("display_color", "show")
+    initToggle("display_material", "show")
+    initToggle("display_brand", "show")
+    initToggle("display_spool_id", "show")
+    initToggle("display_grams", "show")
+    initToggle("display_last_used", "show")
+    initToggle("display_location", "show")
+  })
+</script>
