@@ -12,40 +12,28 @@ inkypi plugin install spoolman_active_spools https://github.com/shadal18/inkypi-
 
 ## Update
 
-If the plugin was installed from GitHub as its own repository, update it from inside the plugin folder and then restart InkyPi.
+To update the plugin on your InkyPi device:
 
-```bash
-cd ~/InkyPi/src/plugins/spoolman_active_spools
-git pull origin main
-sudo systemctl restart inkypi.service
-```
+1. SSH into your InkyPi host.
+2. Change into the plugin directory:
+   ```bash
+   cd ~/InkyPi/src/plugins/spoolman_active_spools
+   ```
+3. Pull the latest changes from GitHub:
+   ```bash
+   git pull origin main
+   ```
+4. Restart InkyPi so it reloads the plugin:
+   ```bash
+   sudo systemctl restart inkypi.service
+   ```
 
-If `git pull` says `Already up to date` but the changes are not showing in the web UI, check that:
+If you don’t see your changes after updating:
 
-- You are in the correct plugin folder
-- The updated files were committed and pushed to GitHub
-- The files were not accidentally added to a nested subfolder
-- InkyPi was restarted after the update
-- Your browser cache was refreshed
-
-You can verify the currently installed plugin files with commands like:
-
-```bash
-cd ~/InkyPi/src/plugins/spoolman_active_spools
-git status
-git remote -v
-find . -name "settings.html"
-```
-
-If a file was accidentally added to a nested folder, move it into the plugin root so InkyPi can use it. For example:
-
-```bash
-cd ~/InkyPi/src/plugins/spoolman_active_spools
-cp spoolman_active_spools/settings.html settings.html
-sudo systemctl restart inkypi.service
-```
-
-After restarting the service, reload the settings page in the browser.
+- Confirm you are in the correct plugin folder.
+- Make sure your changes were committed and pushed to this repository.
+- Clear your browser cache or hard refresh the InkyPi web UI.
+- Check the InkyPi logs for any plugin errors.
 
 ## Requirements
 
