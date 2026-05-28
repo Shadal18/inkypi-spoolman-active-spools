@@ -44,7 +44,7 @@ If you don’t see your changes after updating:
 
 This plugin is an extension for the InkyPi e-paper display frame and includes the following features.
 
-**Features**
+## Features
 
 - Shows recently active Spoolman spools.
 - Configurable active time window.
@@ -58,7 +58,7 @@ This plugin is an extension for the InkyPi e-paper display frame and includes th
 - Clean layout optimized for quick glance reading on e-paper.
 - Human-readable active window labels such as minutes, hours, and days.
 
-**Settings**
+## Settings
 
 - Spoolman URL.
 - Active window in minutes.
@@ -71,7 +71,13 @@ This plugin is an extension for the InkyPi e-paper display frame and includes th
 - Show or hide last used.
 - Show or hide location.
 
-**Screenshots**
+## Repository
+
+GitHub repository:
+
+[https://github.com/shadal18/inkypi-spoolman-active-spools](https://github.com/shadal18/inkypi-spoolman-active-spools)
+
+## Screenshots
 
 - Main plugin display showing active spools.
 - Plugin settings screen.
