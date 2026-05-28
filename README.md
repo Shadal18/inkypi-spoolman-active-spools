@@ -33,7 +33,6 @@ To update the plugin on your InkyPi device:
 If you don’t see your changes after updating:
 
 - Confirm you are in the correct plugin folder.
-- Make sure your changes were committed and pushed to this repository.
 - Clear your browser cache or hard refresh the InkyPi web UI.
 - Check the InkyPi logs for any plugin errors.
 
