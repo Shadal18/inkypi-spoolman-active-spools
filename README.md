@@ -42,9 +42,9 @@ If you don’t see your changes after updating:
 - A reachable Spoolman instance with its API available over HTTP.
 - Network access from the InkyPi device to the Spoolman host.
 
-This plugin is an extension for the InkyPi e-paper display frame and includes the following features.
-
 ## Features
+
+This plugin is an extension for the InkyPi e-paper display frame and includes the following features.
 
 - Shows recently active Spoolman spools.
 - Configurable active time window.
