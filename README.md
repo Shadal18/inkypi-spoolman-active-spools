@@ -19,12 +19,14 @@ To update the plugin on your InkyPi device:
    ```bash
    cd ~/InkyPi/src/plugins/spoolman_active_spools
    ```
-3. Pull the latest changes from GitHub:
+3. Run this update command:
    ```bash
-   git pull origin main
-   ```
-4. Restart InkyPi so it reloads the plugin:
-   ```bash
+   git pull origin main && \
+   if [ -d spoolman_active_spools ]; then \
+     shopt -s dotglob nullglob && \
+     mv spoolman_active_spools/* . && \
+     rmdir spoolman_active_spools; \
+   fi && \
    sudo systemctl restart inkypi.service
    ```
 
