@@ -60,6 +60,8 @@ This plugin is an extension for the InkyPi e-paper display frame and includes th
 
 ## Settings
 
+The plugin settings page lets you customize:
+
 - Spoolman URL.
 - Active window in minutes.
 - Header text.
