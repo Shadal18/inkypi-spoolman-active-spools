@@ -148,6 +148,7 @@
   </div>
 </div>
 
+<script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
 <script>
   function initToggle(settingName, defaultValue = "show") {
     const hiddenInput = document.getElementById(settingName)
@@ -189,5 +190,14 @@
     initToggle("display_grams", "show")
     initToggle("display_last_used", "show")
     initToggle("display_location", "show")
+
+    if (typeof kofiWidgetOverlay !== "undefined") {
+      kofiWidgetOverlay.draw("shadal", {
+        type: "floating-chat",
+        "floating-chat.donateButton.text": "Support me",
+        "floating-chat.donateButton.background-color": "#00b9fe",
+        "floating-chat.donateButton.text-color": "#fff",
+      })
+    }
   })
 </script>
