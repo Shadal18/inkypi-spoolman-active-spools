@@ -23,9 +23,8 @@ To update the plugin on your InkyPi device:
    ```bash
    git pull origin main && \
    if [ -d spoolman_active_spools ]; then \
-     shopt -s dotglob nullglob && \
-     mv spoolman_active_spools/* . && \
-     rmdir spoolman_active_spools; \
+     rsync -a spoolman_active_spools/ ./ && \
+     rm -rf spoolman_active_spools; \
    fi && \
    sudo systemctl restart inkypi.service
    ```
