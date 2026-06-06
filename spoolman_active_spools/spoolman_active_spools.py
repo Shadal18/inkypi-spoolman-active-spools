@@ -30,7 +30,11 @@ class Spoolman(BasePlugin):
         raw = settings.get(key, default_value)
 
         if isinstance(raw, list):
-            raw = raw[-1] if raw else default_value
+            values = [str(v or "").strip().lower() for v in raw if str(v or "").strip()]
+            for value in reversed(values):
+                if value in ("show", "hide"):
+                    return value
+            return default_value
 
         value = str(raw or default_value).strip().lower()
         return "hide" if value == "hide" else "show"
