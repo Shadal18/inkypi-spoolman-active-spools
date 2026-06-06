@@ -11,7 +11,7 @@
     --ag-text-soft: var(--text-muted, #64748b);
     --ag-primary: var(--accent-color, #14b8a6);
     --ag-info: var(--info-color, #3b82f6);
-    --ag-shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.08);
+    --ag-shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.08));
     --ag-radius-xl: 18px;
     --ag-radius-lg: 14px;
   }
@@ -268,6 +268,9 @@
     margin-top: 2px;
     accent-color: var(--ag-primary);
     flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    display: block;
   }
 
   .ph-toggle-title {
@@ -368,7 +371,7 @@
         <div class="ph-metric">
           <div class="ph-metric-label">Default port</div>
           <div class="ph-metric-value">7912</div>
-          <div class="ph-metric-sub">Common self-hosted setup</div>
+          <div class="ph-metric-sub">Common local setup</div>
         </div>
         <div class="ph-metric">
           <div class="ph-metric-label">Display</div>
@@ -399,7 +402,7 @@
               autocomplete="off"
               required
             />
-            <p class="ph-note">Use the base URL for your self-hosted Spoolman instance.</p>
+            <p class="ph-note">Use the base URL for your Spoolman instance, including port 7912 by default.</p>
           </div>
 
           <div class="ph-field">
@@ -443,80 +446,80 @@
       <div class="ph-section-body">
         <div class="ph-toggle-grid">
           <div class="ph-toggle-card">
-            <label>
+            <input type="hidden" id="display_color" name="display_color" value="show" />
+            <label for="display_color_toggle">
               <input type="checkbox" id="display_color_toggle" class="toggle-checkbox" />
               <span>
                 <div class="ph-toggle-title">Color</div>
                 <div class="ph-toggle-copy">Show the spool color information.</div>
               </span>
             </label>
-            <input type="hidden" id="display_color" name="display_color" value="show" />
           </div>
 
           <div class="ph-toggle-card">
-            <label>
+            <input type="hidden" id="display_material" name="display_material" value="show" />
+            <label for="display_material_toggle">
               <input type="checkbox" id="display_material_toggle" class="toggle-checkbox" />
               <span>
                 <div class="ph-toggle-title">Material</div>
                 <div class="ph-toggle-copy">Show the filament material type.</div>
               </span>
             </label>
-            <input type="hidden" id="display_material" name="display_material" value="show" />
           </div>
 
           <div class="ph-toggle-card">
-            <label>
+            <input type="hidden" id="display_brand" name="display_brand" value="show" />
+            <label for="display_brand_toggle">
               <input type="checkbox" id="display_brand_toggle" class="toggle-checkbox" />
               <span>
                 <div class="ph-toggle-title">Brand</div>
                 <div class="ph-toggle-copy">Show the filament brand or manufacturer.</div>
               </span>
             </label>
-            <input type="hidden" id="display_brand" name="display_brand" value="show" />
           </div>
 
           <div class="ph-toggle-card">
-            <label>
+            <input type="hidden" id="display_spool_id" name="display_spool_id" value="show" />
+            <label for="display_spool_id_toggle">
               <input type="checkbox" id="display_spool_id_toggle" class="toggle-checkbox" />
               <span>
                 <div class="ph-toggle-title">Spool ID</div>
                 <div class="ph-toggle-copy">Show each spool’s unique identifier.</div>
               </span>
             </label>
-            <input type="hidden" id="display_spool_id" name="display_spool_id" value="show" />
           </div>
 
           <div class="ph-toggle-card">
-            <label>
+            <input type="hidden" id="display_grams" name="display_grams" value="show" />
+            <label for="display_grams_toggle">
               <input type="checkbox" id="display_grams_toggle" class="toggle-checkbox" />
               <span>
                 <div class="ph-toggle-title">Remaining grams</div>
                 <div class="ph-toggle-copy">Show the estimated remaining filament weight.</div>
               </span>
             </label>
-            <input type="hidden" id="display_grams" name="display_grams" value="show" />
           </div>
 
           <div class="ph-toggle-card">
-            <label>
+            <input type="hidden" id="display_last_used" name="display_last_used" value="show" />
+            <label for="display_last_used_toggle">
               <input type="checkbox" id="display_last_used_toggle" class="toggle-checkbox" />
               <span>
                 <div class="ph-toggle-title">Last used</div>
                 <div class="ph-toggle-copy">Show when each spool was last active.</div>
               </span>
             </label>
-            <input type="hidden" id="display_last_used" name="display_last_used" value="show" />
           </div>
 
           <div class="ph-toggle-card">
-            <label>
+            <input type="hidden" id="display_location" name="display_location" value="show" />
+            <label for="display_location_toggle">
               <input type="checkbox" id="display_location_toggle" class="toggle-checkbox" />
               <span>
                 <div class="ph-toggle-title">Location</div>
                 <div class="ph-toggle-copy">Show the storage location or assigned place for each spool.</div>
               </span>
             </label>
-            <input type="hidden" id="display_location" name="display_location" value="show" />
           </div>
         </div>
       </div>
