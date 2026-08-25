@@ -1,283 +1,291 @@
 <style>
   :root {
-    --ag-bg: var(--background-color, var(--color-background, #f5f7fb));
-    --ag-bg-soft: var(--card-background-secondary, var(--color-surface-2, #eef2f7));
-    --ag-panel: var(--card-background, var(--color-surface, #ffffff));
-    --ag-panel-2: var(--card-background-hover, var(--color-surface-2, #f8fafc));
-    --ag-border: var(--border-color, rgba(15, 23, 42, 0.12));
-    --ag-text: var(--text-primary, var(--color-text, #0f172a));
-    --ag-text-muted: var(--text-secondary, var(--color-text-secondary, #475569));
-    --ag-text-soft: var(--text-muted, #64748b);
-    --ag-primary: var(--accent-color, #14b8a6);
-    --ag-info: var(--info-color, #3b82f6);
-    --ag-shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.08);
-    --ag-radius-xl: 18px;
-    --ag-radius-lg: 14px;
+    --ink-bg: var(--background-color, var(--color-background, #f5f7fb));
+    --ink-bg-soft: var(--card-background-secondary, var(--color-surface-2, #eef2f7));
+    --ink-panel: var(--card-background, var(--color-surface, #ffffff));
+    --ink-panel-2: var(--card-background-hover, var(--color-surface-2, #f8fafc));
+    --ink-border: var(--border-color, rgba(15, 23, 42, 0.12));
+    --ink-text: var(--text-primary, var(--color-text, #0f172a));
+    --ink-text-muted: var(--text-secondary, var(--color-text-secondary, #475569));
+    --ink-text-soft: var(--text-muted, #64748b);
+    --ink-primary: var(--accent-color, #14b8a6);
+    --ink-info: var(--info-color, #3b82f6);
+    --ink-shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.08);
+    --ink-radius-xl: 18px;
+    --ink-radius-lg: 14px;
   }
 
   html.dark,
   body.dark,
   [data-theme="dark"],
   html[data-theme="dark"] {
-    --ag-bg: var(--background-color, var(--color-background, #0f172a));
-    --ag-bg-soft: var(--card-background-secondary, var(--color-surface-2, #162033));
-    --ag-panel: var(--card-background, var(--color-surface, #111827));
-    --ag-panel-2: var(--card-background-hover, var(--color-surface-2, #172033));
-    --ag-border: var(--border-color, rgba(255, 255, 255, 0.1));
-    --ag-text: var(--text-primary, var(--color-text, #f8fafc));
-    --ag-text-muted: var(--text-secondary, var(--color-text-secondary, #cbd5e1));
-    --ag-text-soft: var(--text-muted, #94a3b8);
-    --ag-shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.22);
+    --ink-bg: var(--background-color, var(--color-background, #0f172a));
+    --ink-bg-soft: var(--card-background-secondary, var(--color-surface-2, #162033));
+    --ink-panel: var(--card-background, var(--color-surface, #111827));
+    --ink-panel-2: var(--card-background-hover, var(--color-surface-2, #172033));
+    --ink-border: var(--border-color, rgba(255, 255, 255, 0.1));
+    --ink-text: var(--text-primary, var(--color-text, #f8fafc));
+    --ink-text-muted: var(--text-secondary, var(--color-text-secondary, #cbd5e1));
+    --ink-text-soft: var(--text-muted, #94a3b8);
+    --ink-shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.22);
   }
 
   .spoolman-settings-container {
     width: 100%;
     box-sizing: border-box;
-    color: var(--ag-text);
+    color: var(--ink-text);
   }
 
-  .ph-shell {
+  .ink-shell {
     display: grid;
     gap: 18px;
     margin-top: 8px;
   }
 
-  .ph-hero {
-    position: relative;
+  .ink-hero,
+  .ink-section,
+  .ink-hint-card,
+  .ink-link-card {
     overflow: hidden;
-    border-radius: var(--ag-radius-xl);
-    border: 1px solid var(--ag-border);
-    background:
-      radial-gradient(circle at top right, color-mix(in srgb, var(--ag-primary) 16%, transparent), transparent 34%),
-      radial-gradient(circle at bottom left, color-mix(in srgb, var(--ag-info) 12%, transparent), transparent 30%),
-      linear-gradient(180deg, color-mix(in srgb, var(--ag-panel) 92%, var(--ag-bg-soft) 8%), var(--ag-panel-2));
-    box-shadow: var(--ag-shadow-sm);
-    padding: 22px 22px 18px;
+    border: 1px solid var(--ink-border);
+    border-radius: var(--ink-radius-xl);
+    background: linear-gradient(180deg, var(--ink-panel), var(--ink-panel-2));
+    box-shadow: var(--ink-shadow-sm);
   }
 
-  .ph-eyebrow {
+  .ink-hero {
+    position: relative;
+    padding: 22px;
+    background:
+      radial-gradient(circle at top right, color-mix(in srgb, var(--ink-primary) 16%, transparent), transparent 34%),
+      radial-gradient(circle at bottom left, color-mix(in srgb, var(--ink-info) 12%, transparent), transparent 30%),
+      linear-gradient(180deg, color-mix(in srgb, var(--ink-panel) 92%, var(--ink-bg-soft) 8%), var(--ink-panel-2));
+  }
+
+  .ink-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     padding: 6px 10px;
+    margin-bottom: 10px;
+    border: 1px solid color-mix(in srgb, var(--ink-primary) 22%, transparent);
     border-radius: 999px;
-    background: color-mix(in srgb, var(--ag-primary) 14%, transparent);
-    color: var(--ag-primary);
+    background: color-mix(in srgb, var(--ink-primary) 14%, transparent);
+    color: var(--ink-primary);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    margin-bottom: 10px;
-    border: 1px solid color-mix(in srgb, var(--ag-primary) 22%, transparent);
   }
 
-  .ph-hero h2 {
+  .ink-hero h2 {
     margin: 0;
-    color: var(--ag-text);
+    color: var(--ink-text);
     font-size: 28px;
-    line-height: 1.05;
+    line-height: 1.08;
     letter-spacing: -0.03em;
   }
 
-  .ph-hero p {
-    margin: 10px 0 0;
+  .ink-hero p {
     max-width: 68ch;
-    color: var(--ag-text-muted);
+    margin: 10px 0 0;
+    color: var(--ink-text-muted);
     font-size: 14px;
     line-height: 1.6;
   }
 
-  .ph-metrics {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-    margin-top: 18px;
+  .ink-hint-card,
+  .ink-link-card {
+    padding: 16px 20px;
   }
 
-  .ph-metric {
-    border: 1px solid var(--ag-border);
-    border-radius: var(--ag-radius-lg);
-    background: color-mix(in srgb, var(--ag-panel) 92%, var(--ag-bg) 8%);
-    padding: 14px 14px 12px;
-    min-width: 0;
-    box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 22%, transparent);
-  }
-
-  .ph-metric-label {
-    color: var(--ag-text-soft);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+  .ink-hint-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     margin-bottom: 8px;
   }
 
-  .ph-metric-value {
-    color: var(--ag-text);
-    font-size: 28px;
-    line-height: 1;
-    font-weight: 800;
-    letter-spacing: -0.03em;
+  .ink-hint-icon,
+  .ink-section-icon,
+  .ink-link-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--ink-border);
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--ink-bg-soft) 65%, var(--ink-panel) 35%);
+    font-size: 18px;
   }
 
-  .ph-metric-sub {
-    color: var(--ag-text-muted);
+  .ink-hint-icon {
+    width: 30px;
+    height: 30px;
+    border-color: color-mix(in srgb, var(--ink-primary) 28%, transparent);
+    border-radius: 9px;
+    background: color-mix(in srgb, var(--ink-primary) 14%, transparent);
+    font-size: 16px;
+  }
+
+  .ink-hint-title {
+    margin: 0;
+    color: var(--ink-text);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .ink-hint-copy,
+  .ink-link-help {
+    margin: 0;
+    color: var(--ink-text-muted);
     font-size: 12px;
-    margin-top: 6px;
+    line-height: 1.6;
   }
 
-  .ph-section,
-  .ph-link-card {
-    border: 1px solid var(--ag-border);
-    border-radius: var(--ag-radius-xl);
-    background: linear-gradient(180deg, var(--ag-panel), var(--ag-panel-2));
-    box-shadow: var(--ag-shadow-sm);
-    overflow: hidden;
+  .ink-hint-copy code,
+  .ink-note code {
+    padding: 2px 5px;
+    border-radius: 5px;
+    background: color-mix(in srgb, var(--ink-primary) 12%, transparent);
+    color: var(--ink-text);
+    font-family: monospace;
   }
 
-  .ph-section-header {
+  .ink-section-header {
     display: flex;
     align-items: center;
     gap: 14px;
     padding: 18px 20px;
-    border-bottom: 1px solid var(--ag-border);
+    border-bottom: 1px solid var(--ink-border);
   }
 
-  .ph-section-icon {
+  .ink-section-icon {
     width: 38px;
     height: 38px;
-    border-radius: 12px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-    border: 1px solid var(--ag-border);
-    background: color-mix(in srgb, var(--ag-bg-soft) 65%, var(--ag-panel) 35%);
   }
 
-  .ph-section-copy {
+  .ink-section-copy {
     flex: 1;
     min-width: 0;
   }
 
-  .ph-section-title {
-    color: var(--ag-text);
+  .ink-section-title {
+    margin: 0;
+    color: var(--ink-text);
     font-size: 18px;
     font-weight: 700;
     line-height: 1.2;
-    margin: 0;
   }
 
-  .ph-section-subtitle {
-    color: var(--ag-text-muted);
-    font-size: 13px;
+  .ink-section-subtitle {
     margin-top: 4px;
+    color: var(--ink-text-muted);
+    font-size: 13px;
   }
 
-  .ph-section-body {
+  .ink-section-body {
     padding: 18px 20px 20px;
   }
 
-  .ph-grid {
+  .ink-grid,
+  .ink-grid-2 {
     display: grid;
     gap: 16px;
   }
 
-  .ph-field {
-    display: grid;
-    gap: 8px;
-    min-width: 0;
+  .ink-grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .ph-label {
-    color: var(--ag-text-soft);
+  .ink-field {
+    display: grid;
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .ink-label {
+    color: var(--ink-text-soft);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
 
-  .ph-input,
+  .ink-input,
   .spoolman-settings-container input[type="text"],
   .spoolman-settings-container input[type="number"] {
+    box-sizing: border-box;
     width: 100%;
     min-height: 46px;
     padding: 0 14px;
+    border: 1px solid var(--ink-border);
     border-radius: 12px;
-    border: 1px solid var(--ag-border);
-    background: var(--ag-panel);
-    color: var(--ag-text);
     outline: none;
-    box-sizing: border-box;
+    background: var(--ink-panel);
+    color: var(--ink-text);
     box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 14%, transparent);
   }
 
-  .ph-input::placeholder,
+  .ink-input::placeholder,
   .spoolman-settings-container input::placeholder {
-    color: var(--ag-text-soft);
+    color: var(--ink-text-soft);
     opacity: 1;
   }
 
-  .ph-input:focus,
+  .ink-input:focus,
   .spoolman-settings-container input:focus {
-    border-color: color-mix(in srgb, var(--ag-primary) 45%, transparent);
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--ag-primary) 14%, transparent);
+    border-color: color-mix(in srgb, var(--ink-primary) 45%, transparent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--ink-primary) 14%, transparent);
   }
 
-  .ph-note {
+  .ink-note {
     margin: 0;
-    color: var(--ag-text-muted);
+    color: var(--ink-text-muted);
     font-size: 12px;
     line-height: 1.6;
   }
 
-  .ph-toggle-grid {
+  .ink-toggle-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 12px;
   }
 
-  .ph-toggle-card {
-    border: 1px solid var(--ag-border);
-    border-radius: var(--ag-radius-lg);
+  .ink-toggle-card {
+    border: 1px solid var(--ink-border);
+    border-radius: var(--ink-radius-lg);
     background: linear-gradient(
       180deg,
-      color-mix(in srgb, var(--ag-panel) 96%, #fff 4%),
-      color-mix(in srgb, var(--ag-panel-2) 96%, var(--ag-bg) 4%)
+      color-mix(in srgb, var(--ink-panel) 96%, #fff 4%),
+      color-mix(in srgb, var(--ink-panel-2) 96%, var(--ink-bg) 4%)
     );
     padding: 14px;
     box-shadow: 0 1px 0 color-mix(in srgb, #fff 16%, transparent);
-    color: var(--ag-text);
   }
 
-  .ph-toggle-row {
+  .ink-toggle-row {
     display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
     gap: 12px;
   }
 
-  .ph-toggle-text {
+  .ink-toggle-control {
     display: flex;
-    flex-direction: column;
-    gap: 2px;
-    min-width: 0;
-    order: 1;
-  }
-
-  .ph-toggle-control {
     flex: 0 0 auto;
-    display: flex;
     align-items: center;
     justify-content: center;
     min-width: 24px;
     min-height: 24px;
     padding-top: 2px;
-    order: 0;
+  }
+
+  .ink-toggle-text {
+    min-width: 0;
   }
 
   .spoolman-settings-container input[type="checkbox"],
-  .ph-toggle-card input[type="checkbox"],
+  .ink-toggle-card input[type="checkbox"],
   .toggle-checkbox {
     appearance: auto !important;
     -webkit-appearance: checkbox !important;
@@ -286,92 +294,97 @@
     visibility: visible !important;
     opacity: 1 !important;
     position: static !important;
-    pointer-events: auto !important;
     width: 18px !important;
     height: 18px !important;
-    margin: 0 !important;
-    accent-color: var(--ag-primary);
-    cursor: pointer !important;
-    box-shadow: none !important;
     min-height: 18px !important;
+    margin: 0 !important;
     padding: 0 !important;
     border: initial !important;
     background: initial !important;
+    box-shadow: none !important;
+    accent-color: var(--ink-primary);
+    cursor: pointer !important;
   }
 
-  .ph-toggle-title {
-    color: var(--ag-text);
+  .ink-toggle-title {
+    margin: 0 0 4px;
+    color: var(--ink-text);
     font-size: 14px;
     font-weight: 700;
-    margin: 0 0 4px;
   }
 
-  .ph-toggle-copy {
-    color: var(--ag-text-muted);
+  .ink-toggle-copy {
+    margin: 0;
+    color: var(--ink-text-muted);
     font-size: 12px;
     line-height: 1.5;
-    margin: 0;
   }
 
-  .ph-link-card {
-    padding: 16px 20px;
+  .ink-link-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 
-  .ph-link-card a {
-    color: var(--ag-primary);
-    text-decoration: none;
+  .ink-link-icon {
+    width: 38px;
+    height: 38px;
+    background: color-mix(in srgb, var(--ink-info) 13%, var(--ink-panel));
+  }
+
+  .ink-link-copy {
+    min-width: 0;
+  }
+
+  .ink-link-card a {
+    display: inline-block;
+    color: var(--ink-primary);
     font-weight: 700;
+    text-decoration: none;
     word-break: break-word;
   }
 
-  .ph-link-card a:hover,
-  .ph-link-card a:focus-visible {
-    text-decoration: underline;
+  .ink-link-card a:hover,
+  .ink-link-card a:focus-visible {
     outline: none;
-  }
-
-  .ph-link-help {
-    margin-top: 8px;
-    color: var(--ag-text-muted);
-    font-size: 12px;
-    line-height: 1.6;
+    text-decoration: underline;
   }
 
   .floatingchat-container-wrap,
   .floatingchat-container-wrap-mobi {
-    left: unset !important;
     right: 16px !important;
-    bottom: 16px !important;
+    bottom: 14px !important;
+    left: unset !important;
   }
 
   .floating-chat-kofi-popup-iframe {
-    left: unset !important;
     right: 16px !important;
     bottom: 76px !important;
-  }
-
-  @media (max-width: 920px) {
-    .ph-metrics {
-      grid-template-columns: 1fr;
-    }
+    left: unset !important;
   }
 
   @media (max-width: 760px) {
-    .ph-hero {
+    .ink-hero {
       padding: 18px;
     }
 
-    .ph-hero h2 {
+    .ink-hero h2 {
       font-size: 22px;
     }
 
-    .ph-section-header {
+    .ink-grid-2 {
+      grid-template-columns: 1fr;
+    }
+
+    .ink-section-header,
+    .ink-section-body,
+    .ink-hint-card,
+    .ink-link-card {
       padding: 16px;
     }
 
-    .ph-section-body,
-    .ph-link-card {
-      padding: 16px;
+    .ink-link-card {
+      align-items: flex-start;
     }
   }
 </style>
@@ -379,185 +392,149 @@
 <div class="spoolman-settings-container">
   <input type="hidden" name="plugin_id" value="spoolman_active_spools" />
 
-  <div class="ph-shell">
-    <section class="ph-hero">
-      <div class="ph-eyebrow">Spoolman</div>
+  <div class="ink-shell">
+    <section class="ink-hero">
+      <div class="ink-eyebrow">🧵 Spoolman active spools</div>
       <h2>Display recently active filaments at a glance.</h2>
       <p>
-        Connect the plugin to your Spoolman instance, tune the active time window, customize the heading, and choose
-        which spool details appear on the rendered dashboard.
+        Connect your Spoolman instance, set the recent-activity window, customize the dashboard heading, and choose
+        the spool details shown on your InkyPi display.
       </p>
-
-      <div class="ph-metrics">
-        <div class="ph-metric">
-          <div class="ph-metric-label">Source</div>
-          <div class="ph-metric-value">Spoolman</div>
-          <div class="ph-metric-sub">Filament inventory service</div>
-        </div>
-        <div class="ph-metric">
-          <div class="ph-metric-label">Default port</div>
-          <div class="ph-metric-value">7912</div>
-          <div class="ph-metric-sub">Common local setup</div>
-        </div>
-        <div class="ph-metric">
-          <div class="ph-metric-label">Display</div>
-          <div class="ph-metric-value">E-Ink</div>
-          <div class="ph-metric-sub">Activity dashboard layout</div>
-        </div>
-      </div>
     </section>
 
-    <section class="ph-section">
-      <div class="ph-section-header">
-        <span class="ph-section-icon" aria-hidden="true">🔌</span>
-        <div class="ph-section-copy">
-          <div class="ph-section-title">Connection</div>
-          <div class="ph-section-subtitle">Point the plugin at your Spoolman instance.</div>
+    <section class="ink-hint-card">
+      <div class="ink-hint-heading">
+        <span class="ink-hint-icon" aria-hidden="true">🔗</span>
+        <h3 class="ink-hint-title">Connect Spoolman</h3>
+      </div>
+      <p class="ink-hint-copy">
+        Enter the base URL for the Spoolman instance that InkyPi can reach, including its protocol and port—for
+        example, <code>http://spoolman.local:7912</code>.
+      </p>
+    </section>
+
+    <section class="ink-section">
+      <div class="ink-section-header">
+        <span class="ink-section-icon" aria-hidden="true">🔌</span>
+        <div class="ink-section-copy">
+          <h3 class="ink-section-title">Connection and activity</h3>
+          <div class="ink-section-subtitle">Point the plugin at Spoolman and define what counts as recently active.</div>
         </div>
       </div>
-      <div class="ph-section-body">
-        <div class="ph-grid">
-          <div class="ph-field">
-            <label class="ph-label" for="spoolman_url">Spoolman URL</label>
+
+      <div class="ink-section-body">
+        <div class="ink-grid">
+          <div class="ink-field">
+            <label class="ink-label" for="spoolman_url">Spoolman URL</label>
             <input
               type="text"
               id="spoolman_url"
               name="spoolman_url"
-              class="ph-input"
+              class="ink-input"
               placeholder="http://spoolman.local:7912"
-              autocomplete="off"
+              inputmode="url"
+              autocomplete="url"
               required
             />
-            <p class="ph-note">Use the base URL for your Spoolman instance, including port 7912 by default.</p>
+            <p class="ink-note">Use the base URL only; do not append an API path.</p>
           </div>
 
-          <div class="ph-field">
-            <label class="ph-label" for="active_minutes">Active window (minutes)</label>
-            <input
-              type="number"
-              id="active_minutes"
-              name="active_minutes"
-              class="ph-input"
-              placeholder="60"
-              min="1"
-              step="1"
-            />
-            <p class="ph-note">Only spools active within this recent time window are shown.</p>
-          </div>
+          <div class="ink-grid-2">
+            <div class="ink-field">
+              <label class="ink-label" for="active_minutes">Active window (minutes)</label>
+              <input
+                type="number"
+                id="active_minutes"
+                name="active_minutes"
+                class="ink-input"
+                min="1"
+                step="1"
+                placeholder="60"
+              />
+              <p class="ink-note">Only spools active during this recent time window are included.</p>
+            </div>
 
-          <div class="ph-field">
-            <label class="ph-label" for="title_text">Header text</label>
-            <input
-              type="text"
-              id="title_text"
-              name="title_text"
-              class="ph-input"
-              placeholder="Recent Active Filaments"
-              autocomplete="off"
-            />
-            <p class="ph-note">This text appears as the main heading on the dashboard.</p>
+            <div class="ink-field">
+              <label class="ink-label" for="title_text">Header text</label>
+              <input
+                type="text"
+                id="title_text"
+                name="title_text"
+                class="ink-input"
+                placeholder="Recent Active Filaments"
+                maxlength="40"
+                autocomplete="off"
+              />
+              <p class="ink-note">Optional title shown at the top of the dashboard.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="ph-section">
-      <div class="ph-section-header">
-        <span class="ph-section-icon" aria-hidden="true">📊</span>
-        <div class="ph-section-copy">
-          <div class="ph-section-title">Display fields</div>
-          <div class="ph-section-subtitle">Choose which spool details appear on the rendered display.</div>
+    <section class="ink-section">
+      <div class="ink-section-header">
+        <span class="ink-section-icon" aria-hidden="true">📊</span>
+        <div class="ink-section-copy">
+          <h3 class="ink-section-title">Display fields</h3>
+          <div class="ink-section-subtitle">Choose which spool details appear on the rendered display.</div>
         </div>
       </div>
-      <div class="ph-section-body">
-        <div class="ph-toggle-grid">
-          <div class="ph-toggle-card">
-            <div class="ph-toggle-row">
-              <div class="ph-toggle-control">
-                <input type="checkbox" id="display_color_toggle" class="toggle-checkbox" />
-              </div>
-              <div class="ph-toggle-text">
-                <div class="ph-toggle-title">Color</div>
-                <div class="ph-toggle-copy">Show the spool color information.</div>
-              </div>
+
+      <div class="ink-section-body">
+        <div class="ink-toggle-grid">
+          <div class="ink-toggle-card">
+            <div class="ink-toggle-row">
+              <div class="ink-toggle-control"><input type="checkbox" id="display_color_toggle" class="toggle-checkbox" /></div>
+              <div class="ink-toggle-text"><div class="ink-toggle-title">Color</div><p class="ink-toggle-copy">Show the spool color information.</p></div>
             </div>
             <input type="hidden" id="display_color" name="display_color" value="show" />
           </div>
 
-          <div class="ph-toggle-card">
-            <div class="ph-toggle-row">
-              <div class="ph-toggle-control">
-                <input type="checkbox" id="display_material_toggle" class="toggle-checkbox" />
-              </div>
-              <div class="ph-toggle-text">
-                <div class="ph-toggle-title">Material</div>
-                <div class="ph-toggle-copy">Show the filament material type.</div>
-              </div>
+          <div class="ink-toggle-card">
+            <div class="ink-toggle-row">
+              <div class="ink-toggle-control"><input type="checkbox" id="display_material_toggle" class="toggle-checkbox" /></div>
+              <div class="ink-toggle-text"><div class="ink-toggle-title">Material</div><p class="ink-toggle-copy">Show the filament material type.</p></div>
             </div>
             <input type="hidden" id="display_material" name="display_material" value="show" />
           </div>
 
-          <div class="ph-toggle-card">
-            <div class="ph-toggle-row">
-              <div class="ph-toggle-control">
-                <input type="checkbox" id="display_brand_toggle" class="toggle-checkbox" />
-              </div>
-              <div class="ph-toggle-text">
-                <div class="ph-toggle-title">Brand</div>
-                <div class="ph-toggle-copy">Show the filament brand or manufacturer.</div>
-              </div>
+          <div class="ink-toggle-card">
+            <div class="ink-toggle-row">
+              <div class="ink-toggle-control"><input type="checkbox" id="display_brand_toggle" class="toggle-checkbox" /></div>
+              <div class="ink-toggle-text"><div class="ink-toggle-title">Brand</div><p class="ink-toggle-copy">Show the filament brand or manufacturer.</p></div>
             </div>
             <input type="hidden" id="display_brand" name="display_brand" value="show" />
           </div>
 
-          <div class="ph-toggle-card">
-            <div class="ph-toggle-row">
-              <div class="ph-toggle-control">
-                <input type="checkbox" id="display_spool_id_toggle" class="toggle-checkbox" />
-              </div>
-              <div class="ph-toggle-text">
-                <div class="ph-toggle-title">Spool ID</div>
-                <div class="ph-toggle-copy">Show each spool’s unique identifier.</div>
-              </div>
+          <div class="ink-toggle-card">
+            <div class="ink-toggle-row">
+              <div class="ink-toggle-control"><input type="checkbox" id="display_spool_id_toggle" class="toggle-checkbox" /></div>
+              <div class="ink-toggle-text"><div class="ink-toggle-title">Spool ID</div><p class="ink-toggle-copy">Show each spool’s unique identifier.</p></div>
             </div>
             <input type="hidden" id="display_spool_id" name="display_spool_id" value="show" />
           </div>
 
-          <div class="ph-toggle-card">
-            <div class="ph-toggle-row">
-              <div class="ph-toggle-control">
-                <input type="checkbox" id="display_grams_toggle" class="toggle-checkbox" />
-              </div>
-              <div class="ph-toggle-text">
-                <div class="ph-toggle-title">Remaining grams</div>
-                <div class="ph-toggle-copy">Show the estimated remaining filament weight.</div>
-              </div>
+          <div class="ink-toggle-card">
+            <div class="ink-toggle-row">
+              <div class="ink-toggle-control"><input type="checkbox" id="display_grams_toggle" class="toggle-checkbox" /></div>
+              <div class="ink-toggle-text"><div class="ink-toggle-title">Remaining grams</div><p class="ink-toggle-copy">Show the estimated remaining filament weight.</p></div>
             </div>
             <input type="hidden" id="display_grams" name="display_grams" value="show" />
           </div>
 
-          <div class="ph-toggle-card">
-            <div class="ph-toggle-row">
-              <div class="ph-toggle-control">
-                <input type="checkbox" id="display_last_used_toggle" class="toggle-checkbox" />
-              </div>
-              <div class="ph-toggle-text">
-                <div class="ph-toggle-title">Last used</div>
-                <div class="ph-toggle-copy">Show when each spool was last active.</div>
-              </div>
+          <div class="ink-toggle-card">
+            <div class="ink-toggle-row">
+              <div class="ink-toggle-control"><input type="checkbox" id="display_last_used_toggle" class="toggle-checkbox" /></div>
+              <div class="ink-toggle-text"><div class="ink-toggle-title">Last used</div><p class="ink-toggle-copy">Show when each spool was last active.</p></div>
             </div>
             <input type="hidden" id="display_last_used" name="display_last_used" value="show" />
           </div>
 
-          <div class="ph-toggle-card">
-            <div class="ph-toggle-row">
-              <div class="ph-toggle-control">
-                <input type="checkbox" id="display_location_toggle" class="toggle-checkbox" />
-              </div>
-              <div class="ph-toggle-text">
-                <div class="ph-toggle-title">Location</div>
-                <div class="ph-toggle-copy">Show the storage location or assigned place for each spool.</div>
-              </div>
+          <div class="ink-toggle-card">
+            <div class="ink-toggle-row">
+              <div class="ink-toggle-control"><input type="checkbox" id="display_location_toggle" class="toggle-checkbox" /></div>
+              <div class="ink-toggle-text"><div class="ink-toggle-title">Location</div><p class="ink-toggle-copy">Show the storage location or assigned place for each spool.</p></div>
             </div>
             <input type="hidden" id="display_location" name="display_location" value="show" />
           </div>
@@ -565,21 +542,23 @@
       </div>
     </section>
 
-    <section class="ph-link-card">
-      <a href="https://github.com/Shadal18/inkypi-spoolman-active-spools" target="_blank" rel="noopener noreferrer">
-        github.com/Shadal18/inkypi-spoolman-active-spools
-      </a>
-      <div class="ph-link-help">Setup help, updates, release notes, and source code.</div>
+    <section class="ink-link-card">
+      <span class="ink-link-icon" aria-hidden="true">⌘</span>
+      <div class="ink-link-copy">
+        <a href="https://github.com/Shadal18/inkypi-spoolman-active-spools" target="_blank" rel="noopener noreferrer">
+          github.com/Shadal18/inkypi-spoolman-active-spools
+        </a>
+        <div class="ink-link-help">Setup help, updates, release notes, and source code.</div>
+      </div>
     </section>
   </div>
 </div>
 
 <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
 <script>
-  function initToggle(settingName, defaultValue = "show") {
+  function initToggle(settingName, defaultValue) {
     const hiddenInput = document.getElementById(settingName)
     const toggle = document.getElementById(settingName + "_toggle")
-
     if (!hiddenInput || !toggle) return
 
     let currentValue = defaultValue
@@ -596,35 +575,27 @@
     const isShown = currentValue === "show"
     hiddenInput.value = isShown ? "show" : "hide"
     toggle.checked = isShown
-
-    toggle.addEventListener("change", () => {
+    toggle.addEventListener("change", function () {
       hiddenInput.value = toggle.checked ? "show" : "hide"
     })
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    let spoolman_url = "http://spoolman.local:7912"
-    let active_minutes = "60"
-    let title_text = "Recent Active Filaments"
-
-    if (
-      typeof loadPluginSettings !== "undefined" &&
-      loadPluginSettings &&
-      typeof pluginSettings !== "undefined" &&
-      pluginSettings
-    ) {
-      spoolman_url = pluginSettings.spoolman_url || spoolman_url
-      active_minutes = pluginSettings.active_minutes || active_minutes
-      title_text = pluginSettings.title_text || title_text
+  document.addEventListener("DOMContentLoaded", function () {
+    const defaults = {
+      spoolman_url: "http://spoolman.local:7912",
+      active_minutes: "60",
+      title_text: "Recent Active Filaments",
     }
 
-    const spoolmanUrlInput = document.getElementById("spoolman_url")
-    const activeMinutesInput = document.getElementById("active_minutes")
-    const titleTextInput = document.getElementById("title_text")
+    const values =
+      typeof loadPluginSettings !== "undefined" && loadPluginSettings && typeof pluginSettings !== "undefined"
+        ? Object.assign({}, defaults, pluginSettings)
+        : defaults
 
-    if (spoolmanUrlInput) spoolmanUrlInput.value = spoolman_url
-    if (activeMinutesInput) activeMinutesInput.value = active_minutes
-    if (titleTextInput) titleTextInput.value = title_text
+    Object.keys(defaults).forEach(function (key) {
+      const element = document.getElementById(key)
+      if (element) element.value = values[key] != null ? values[key] : defaults[key]
+    })
 
     initToggle("display_color", "show")
     initToggle("display_material", "show")
@@ -635,9 +606,11 @@
     initToggle("display_location", "show")
 
     if (typeof kofiWidgetOverlay !== "undefined") {
+      const messages = ["I ♥ Coffee", "Tip Jar", "Fuel the Pixels", "Buy Me a Coffee", "Keep InkyPi Brewing"]
+      const message = messages[Math.floor(Math.random() * messages.length)]
       kofiWidgetOverlay.draw("shadal", {
         type: "floating-chat",
-        "floating-chat.donateButton.text": "Buy coffee!",
+        "floating-chat.donateButton.text": message,
         "floating-chat.donateButton.background-color": "#00b9fe",
         "floating-chat.donateButton.text-color": "#fff",
       })
